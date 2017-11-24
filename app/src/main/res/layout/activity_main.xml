@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/codeBarresActivity"
+        android:id="@+id/codesBarresActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Codes-barres"
@@ -33,7 +33,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codeBarresActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/codesBarresActivity" />
 
     <Button
         android:id="@+id/capteursActivity"

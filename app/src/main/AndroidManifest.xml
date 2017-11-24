@@ -21,6 +21,18 @@
         <activity
             android:name=".NfcActivity"
             android:label="@string/title_activity_rfc"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CodesBarresActivity"
+            android:label="@string/title_activity_codes_barres"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".IBeaconActivity"
+            android:label="@string/title_activity_ibeacon"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CapteursActivity"
+            android:label="@string/title_activity_capteurs"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

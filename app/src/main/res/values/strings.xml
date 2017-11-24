@@ -2,4 +2,7 @@
     <string name="app_name">SYM - Laboratoire 3</string>
     <string name="title_activity_main">Laboratoire Accueil</string>
     <string name="title_activity_rfc">Balises RFC</string>
+    <string name="title_activity_codes_barres">Codes-barres</string>
+    <string name="title_activity_ibeacon">Balises iBeacon</string>
+    <string name="title_activity_capteurs">Capteurs</string>
 </resources>

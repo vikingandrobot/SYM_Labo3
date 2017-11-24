@@ -9,7 +9,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button nfcActivity;
-    private Button codeBarresActivity;
+    private Button codesBarresActivity;
     private Button iBeaconActivity;
     private Button capteursActivity;
 
@@ -27,11 +27,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        codesBarresActivity = (Button) findViewById(R.id.codesBarresActivity);
+        codesBarresActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CodesBarresActivity.class);
+                startActivity(intent);
+            }
+        });
 
-
-        codeBarresActivity = (Button) findViewById(R.id.codeBarresActivity);
         iBeaconActivity = (Button) findViewById(R.id.iBeaconActivity);
+        iBeaconActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), IBeaconActivity.class);
+                startActivity(intent);
+            }
+        });
+
         capteursActivity = (Button) findViewById(R.id.capteursActivity);
+        capteursActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CapteursActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
