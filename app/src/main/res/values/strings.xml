@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SYM - Laboratoire 3</string>
     <string name="title_activity_main">Laboratoire Accueil</string>
+    <string name="title_activity_rfc">Balises RFC</string>
 </resources>
