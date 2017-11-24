@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Labo3 - 3D Compass template</string>
+    <string name="app_name">SYM - Laboratoire 3</string>
+    <string name="title_activity_main">Laboratoire Accueil</string>
 </resources>

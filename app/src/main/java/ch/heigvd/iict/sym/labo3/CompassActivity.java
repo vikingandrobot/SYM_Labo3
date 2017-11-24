@@ -1,8 +1,8 @@
-package ch.heigvd.iict.sym.a3dcompassapp;
+package ch.heigvd.iict.sym.labo3;
 
 import android.opengl.GLSurfaceView;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 

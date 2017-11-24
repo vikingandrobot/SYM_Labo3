@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ch.heigvd.iict.sym.a3dcompassapp.CompassActivity">
+    tools:context="ch.heigvd.iict.sym.labo3.CompassActivity">
 
     <android.opengl.GLSurfaceView
         android:id="@+id/compass_opengl"
