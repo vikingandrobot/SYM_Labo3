@@ -48,11 +48,11 @@ public class IBeaconActivity extends AppCompatActivity implements BeaconConsumer
         setSupportActionBar(toolbar);
 
         this.list = findViewById(R.id.list);
-        // this.empty = findViewById(R.id.list_empty);
+         this.empty = findViewById(R.id.list_empty);
 
         this.adapter = new BeaconAdapter(this);
         this.list.setAdapter(adapter);
-        //  this.list.setEmptyView(empty);
+         this.list.setEmptyView(empty);
 
         beaconManager = BeaconManager.getInstanceForApplication(this);
         beaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout("m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25"));
@@ -161,6 +161,8 @@ public class IBeaconActivity extends AppCompatActivity implements BeaconConsumer
                     for (Beacon beacon : beacons) {
                         Log.i(TAG, "--- The beacon [" + i++ + "] " + beacon.toString() + " is about " + beacon.getDistance() + " meters away.");
                     }
+                }else{
+                    adapter.clear();
                 }
             }
         });
@@ -191,6 +193,15 @@ public class IBeaconActivity extends AppCompatActivity implements BeaconConsumer
                 }
             });
             Log.i(TAG, "addBEACON ON LIST");
+        }
+        public void clear(){
+            this.beaconsList.clear();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    notifyDataSetChanged();
+                }
+            });
         }
 
         @Override
