@@ -117,6 +117,8 @@ public class NfcActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!secureMode && passwordEditText.getText().toString().equals(PASSWORD)) {
                     System.out.println("Logged with normal mode");
+
+                    login();
                 }
                 else {
                     Toast.makeText(NfcActivity.this, "Wrong password", Toast.LENGTH_LONG).show();
@@ -218,6 +220,15 @@ public class NfcActivity extends AppCompatActivity {
     }
 
     /**
+     * Handle the login activity
+     */
+    private void login() {
+        Intent intent = new Intent(NfcActivity.this, AuthenticatedActivity.class);
+        intent.putExtra("level", AuthenticatedActivity.Level.AUTHENTICATE_MAX.level());
+        startActivity(intent);
+    }
+
+    /**
      * Inner class NdefReaderTask
      *
      * Allow to reading the data in background.
@@ -279,6 +290,8 @@ public class NfcActivity extends AppCompatActivity {
                     // Check the password
                     if(passwordEditText.getText().toString().equals(PASSWORD)) {
                         System.out.println("Logged with secure mode");
+
+                        login();
                     }
                     else {
                         Toast.makeText(NfcActivity.this, "Wrong password", Toast.LENGTH_LONG).show();
@@ -286,6 +299,8 @@ public class NfcActivity extends AppCompatActivity {
                 }
                 else {
                     System.out.println("Logged with normal mode with NFC only");
+
+                    login();
                 }
             }
             else {
