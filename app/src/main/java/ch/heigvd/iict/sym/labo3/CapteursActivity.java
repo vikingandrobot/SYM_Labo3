@@ -98,8 +98,8 @@ public class CapteursActivity extends AppCompatActivity {
     }
 
     private void computeMatrix() {
-        SensorManager.getRotationMatrix(lastRotationMatrix, null, gravity, geomagnetic);
-        if (lastRotationMatrix != null)
+        boolean success = SensorManager.getRotationMatrix(lastRotationMatrix, null, gravity, geomagnetic);
+        if (success)
             lastRotationMatrix = opglr.swapRotMatrix(lastRotationMatrix);
     }
 
