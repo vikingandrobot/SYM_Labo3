@@ -1,5 +1,7 @@
 package ch.heigvd.iict.sym.labo3;
 
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
