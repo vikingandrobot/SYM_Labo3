@@ -111,6 +111,12 @@
 	
 	\section*{Balises NFC}
 	\subsection*{Manipulation}
+    Pour des questions de simplicité, nous avons codé le mot de passe (mypassword) et le niveau de sécurité en dur (AUTHENTICATE\_MAX). Il est bien évidemment déconseillé de procéder de cette façon. L'utilisateur devrait pouvoir choisir le niveau de sécurité à l'aide d'une liste déroulante (max - 3 min, medium - 5 min et low - 10 min). 
+    
+    Ensuite, pour le niveau de sécurité, nous avons implémenté un compteur qui permet de détruire l'activité après un certain temps (Selon le niveau de sécurité choisi). Puis l'utilisateur est redirigé sur la page d'authentification où il peut recommencer les opérations de connexion.
+    
+    Une autre possibilité est de permettre une lecture du tag NFC dans l'activité authentifiée afin de rallonger le temps sans pour autant passer par la page de connexion. Pour cela, il suffit de créer une variable timestamp que l'on remet à jour à chaque fois que le tag NFC est lu. Si le timestamp est expiré, nous fermons l'activité.
+    
 	\subsection*{Réponse aux questions}
 	Sachant que les collaborateurs de l'entreprise UBIQOMP SA se déplacent en véhiculant des informations précieuses dans leurs dispositifs informatiques mobiles (munis de dispositifs de lecture NFC), et qu'ils sont amenés à se rendre dans des zones à risque, un expert a fait les estimations suivantes : 
 	

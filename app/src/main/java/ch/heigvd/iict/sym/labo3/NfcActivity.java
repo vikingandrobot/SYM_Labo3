@@ -47,7 +47,7 @@ public class NfcActivity extends AppCompatActivity {
     private Button loginButton;
 
     // This is bad
-    private final String PASSWORD = "hardcodepassword";
+    private final String PASSWORD = "mypassword";
 
 
     @Override
