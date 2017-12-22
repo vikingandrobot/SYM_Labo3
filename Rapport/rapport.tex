@@ -126,7 +126,70 @@
 	 
 	 {\color[rgb]{0,0.5,0.23}\textbf{Réponse}}
 	 
-	
+	 \subsection*{Probabilités de perte de données}
+	 Pour les sous-sections suivantes, nous désignerons les 4 événements de la facon suivante: 
+	 
+	 \begin{itemize}
+	 	\item Soit A le fait que le mobile se fasse dérober par une personne malintentionnée
+	 	\item Soit B le fait que le mot de passe soit découvert
+	 	\item Soit C le fait que porte-clé soit dérobé
+	 	\item Soit D le fait qu'un criminel ayant dérobé le mobile et le porte-clé sache que le porte-clé permet l'accès au téléphone
+	 \end{itemize}
+ 
+ 	Soient les probabilités suivantes:
+  	\begin{itemize}
+  		\item P(A) = 0.01
+  		\item P(B) = 0.04
+  		\item P(C) = 0.1
+  		\item P(D) = 0.1
+  	\end{itemize}
+	 
+	 \subsubsection*{La balise et le mot de passe sont nécessaires}
+	 
+	 Les conditions suivantes sont donc nécessaires : A ET B ET C ET D
+	 
+	 P = $ P(A)  \cdot P(B) \cdot P(C) \cdot P(D) = 0.000004 $
+	 
+	 \subsubsection*{Le mot de passe ou la balise sont nécessaires}
+	 Les conditions suivantes sont donc nécessaires : (A ET B) OU (A ET C ET D)
+	 
+	 P = $ (P(A) \cdot P(B)) + (P(A) \cdot P(C) \cdot P(D)) = 0.0005 $
+	 
+	 \subsubsection*{Seule la balise est nécessaire}
+	 Nous intréprétons cette question comme le fait que seule la balise NFC permet l'accès aux données sensibles et qu'il n'y a pas de système de mot de passe. En effet le cas ou le mot de passe constitue un autre moyen d'accéder aux données est déjà traité dans la section précédente.
+	 
+	 Les conditions suivantes sont nécessaires : (A ET C ET D)
+	 
+	 P = $ P(A) \cdot P(C) \cdot P(D) = 0.0001 $
+	 
+	 \subsubsection*{Conclusion}
+	 On remarque que le cas de figure le plus sécurisé (sans surprise) est celui où il est nécessaire de connaître le mot de passe, et de posséder la balise pour accéder aux données sensibles. On remarque également que le fait que soit le mot de passe ou soit la balise suffisent n'augmente pas la sécurité, mais au contraire augmente les chances de perdre des données. En effet si plusieurs mécanismes différents permettent l'accès aux données, et qu'il n'y pas de lien entre eux, on augmente les possibilités d'intrusion au sein du système sécurisé. 
+	 
+	 On remarque que bien que cette façon de faire soit sûrement plus ergonomique et agréable pour les collaborateurs, la sécurité en est affectée en mal.
+	 
+	 Finalement on notera peut-être qu'il ne faut pas trop compter sur l'ignorance des attaquants concernant l'utilisation de la balise pour estimer les risques d'intrusions. La sécurité par l'obscurité n'est jamais une valeur sûre...
+	 
+	 \subsection*{Ajout d'un serveur éloigné}
+	 \subsubsection*{Conditions}
+	 Il est possible d'améliorer un peu la sécurité en ajoutant un serveur éloigné qui contrôle les informations d'authenfication. Il faut cependant respecter certaines conditions. 
+	 
+	 Les données ne doivent pas rester sur le téléphone plus longtemps que nécessaire. Même si l'authentification est effectuée en terrain controlé sur le serveur, si les données sensibles restent sur le téléphone, l'attaquant pourra les consulter. Il faudrait donc que le serveur fournisse les données après une authentification réussie et qu'elles soient effacées après un court intervalle de temps (de la mémoire vive ou de la mémoire de stockage). Cela permettra donc également de bloquer les utilisateurs qui se sont fait dérober leur terminal. 
+	 
+	 Il faut également pouvoir identifier la source de la requête d'authenfication (s'assurer qu'il s'agit d'un terminal connu et sûr) et également essayer de protéger au mieux les données le long de la transmission.  
+	 
+	 \subsubsection*{Inconvénients}
+	 L'inconvénient évident de ce système est que le terminal mobile nécessite d'être connecté au réseau pour pouvoir être utilisé. Il est également nécessaire que l'utilisateur entre son mot de passe et scanne le badge à chaque utilisation. Cela peut donc être une source d'inconfort pour l'utilisateur. 
+	 
+	 \subsection*{Stratégie}
+	 L'idée serait donc de mettre en place un serveur d'authentification au sein d'un environnement controlé de l'entreprise. Cela permettrait de sécuriser l'étape d'authentifcation et d'autorisation en étant sûr que le code exécuté n'a pas été altéré par un attaquant. 
+	 
+	 Les données sensibles ne doivent pas rester sur le téléphone (en mémoire vive, seulement le temps de la consultation et des traitements nécessaires). Il faudrait également que les données soient effacées de l'application exécutée après un certain temps d'inactivité. Les données transmises doivent évidemment être chiffrées.
+	 
+	 L'utilisateur doit entrer son mot de passe à chaque utilisation, il ne doit pas être stocké en dur. 
+	 Il serait également bien de changer régulièrement de paires mot de passe / balise NFC pour éviter qu'un attaquant puisse attaquer les deux séparèment sur plusieurs jours par exemple. 
+	 
+	 Les inconvénients pour les utilisateurs sont évidemment la perte du mode hors-ligne et les contraintes d'utilisation. Pour la société, il s'agit d'une stratégie beaucoup plus complexe à maintenir et gourmande en ressources.
+	 
 	\section*{Codes-barres}
 	\subsection*{Manipulation}
 	\subsection*{Réponse aux questions}
@@ -245,6 +308,49 @@
 	
 	{\color[rgb]{0,0.5,0.23}\textbf{Réponse}}
 	
+	\subsection*{Cause probable de ce phénomène}
+	La cause la plus probable de ce tremblement est la présence de bruits parasites dans les données calculées par les différents capteurs, tant au moment de la réception des données livrées par les capteurs d'accélération et de magnétisme, qu'au moment du calcul de la matrice de rotation avec la méthode \textbf{getRotationMatrix} de la classe SensorManager. 
+	
+	En effet, les phénomènes physiques ne sont pas des événements ayant des propriétés constantes. Nous ne sommes pas physiciens, mais nous ne serions pas surpris qu'un champ magnétique perçu par l'appareil oscille avec le temps même si le téléphone ne bouge pas. 
+	
+	De petites variations sont donc visibles a l'oeil nu sur la rotation de de la flèche de la boussole.
+	
+	\subsection*{Solution}
+	En faisant des recherches sur internet, notamment sur des exemples d'implémentation de boussole pour Android justement, nous avons découvert la notion de filtre passe-bas. 
+	
+	Ces filtres permettent (dans ce contexte) de réduire les petites fluctuations des valeurs fournies par les capteurs. Le listing \ref{filtre_passe_bas} présente un exemple de filtre passe-bas que nous avons trouvé : 
+	
+	\lstset{escapechar=@,style=JavaCode}
+	\begin{lstlisting}[caption={Exemple de filtre passe-bas},label={filtre_passe_bas}]
+	protected float[] lowPass( float[] input, float[] output ) {
+		if ( output == null ) {
+			return input;  
+		}
+		   
+		for ( int i=0; i<input.length; i++ ) {
+			output[i] = output[i] + ALPHA * (input[i] - output[i]);
+		}
+		return output;
+	}
+	\end{lstlisting}
+	
+	Dans cette méthode, le paramètre input représente les nouvelles valeurs et output les anciennes valeurs des capteurs. La valeur de la constante ALPHA permet de spécifier la force du filtre. Lorsqu'elle vaut 0, les valeurs ne changent plus (on garde toujours output). Quand elle vaut 1, le filtre n'a pas d'effet.
+	
+	En regardant le code, on remarque que les petites variations de valeurs seront donc atténuées plus fortement que les grandes, et donc cela permet de réduire les perturbations.
+	
+	Nous avons tenté d'implémenter cet algorithme en l'appliquant à la matrice de rotation calculée pour afficher la boussole. Nous avons constaté que les tremblements étaient en effet atténués (avec par exemple ALPHA = 0.1). La boussole ne tremblait plus du tout lorsque le téléphone ne bougeait plus, et fonctionnait correctement. Cependant, nous avons eu d'autres problèmes d'affichages probablement liés au fait que nous réutilisons les deux matrices de rotations entre les affichages (et donc nous modifions parfois des matrices utilisées dans l'affichage). Nous avons donc décidé de ne pas retenir cette amélioration dans le code rendu car nous n'avons pas eu le temps de la perfectionner.
+	
+	En conclusion, cette solution semble fonctionner, mais elle possède sans doute un coût de traitement. Il faut en effet faire attention de ne pas modifier les valeurs utilisées par l'affichage avant d'avoir appliqué le filtre passe-bas. Cela demande donc d'effectuer des copies de valeurs et d'utiliser des matrices supplémentaires. 
+	
+	\subsubsection*{Sources}
+	Exemple de boussole Android utilisant un filtre passe-bas
+	
+	https://www.ssaurel.com/blog/learn-how-to-make-a-compass-application-
+		for-android/
+	
+	Exemple d'implémentation de filtre passe-bas
+	
+	https://www.built.io/blog/applying-low-pass-filter-to-android-sensor-s-readings
 	
 	
 \end{document}
