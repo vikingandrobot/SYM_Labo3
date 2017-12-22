@@ -126,7 +126,49 @@
 	 
 	 {\color[rgb]{0,0.5,0.23}\textbf{Réponse}}
 	 
-	
+	 \subsection*{Probabilités de perte de données}
+	 Pour les sous-sections suivantes, nous désignerons les 4 événements de la facon suivante: 
+	 
+	 \begin{itemize}
+	 	\item Soit A le fait que le mobile se fasse dérober par une personne malintentionnée
+	 	\item Soit B le fait que le mot de passe soit découvert
+	 	\item Soit C le fait que porte-clé soit dérobé
+	 	\item Soit D le fait qu'un criminel ayant dérobé le mobile et le porte-clé sache que le porte-clé permet l'accès au téléphone
+	 \end{itemize}
+ 
+ 	Soient les probabilités suivantes:
+  	\begin{itemize}
+  		\item P(A) = 0.01
+  		\item P(B) = 0.04
+  		\item P(C) = 0.1
+  		\item P(D) = 0.1
+  	\end{itemize}
+	 
+	 \subsubsection*{La balise et le mot de passe sont nécessaires}
+	 
+	 Les conditions suivantes sont donc nécessaires : A ET B ET C ET D
+	 
+	 P = $ P(A)  \cdot P(B) \cdot P(C) \cdot P(D) = 0.000004 $
+	 
+	 \subsubsection*{Le mot de passe ou la balise sont nécessaires}
+	 Les conditions suivantes sont donc nécessaires : (A ET B) OU (A ET C ET D)
+	 
+	 P = $ (P(A) \cdot P(B)) + (P(A) \cdot P(C) \cdot P(D)) = 0.0005 $
+	 
+	 \subsubsection*{Seule la balise est nécessaire}
+	 Nous intréprétons cette question comme le fait que seule la balise NFC permet l'accès aux données sensibles et qu'il n'y a pas de système de mot de passe. En effet le cas ou le mot de passe constitue un autre moyen d'accéder aux données est déjà traité dans la section précédente.
+	 
+	 Les conditions suivantes sont nécessaires : (A ET C ET D)
+	 
+	 P = $ P(A) \cdot P(C) \cdot P(D) = 0.0001 $
+	 
+	 \subsubsection*{Conclusion}
+	 On remarque que le cas de figure le plus sécurisé (sans surprise) est celui où il est nécessaire de connaître le mot de passe, et de posséder la balise pour accéder aux données sensibles. On remarque également que le fait que soit le mot de passe ou soit la balise suffisent n'augmente pas la sécurité, mais au contraire augmente les chances de perdre des données. En effet si plusieurs mécanismes différents permettent l'accès aux données, et qu'il n'y pas de lien entre eux, on augmente les possibilités d'intrusion au sein du système sécurisé. 
+	 
+	 On remarque que bien que cette façon de faire soit sûrement plus ergonomique et agréable pour les collaborateurs, la sécurité en est affectée en mal.
+	 
+	 Finalement on notera peut-être qu'il ne faut pas trop compter sur l'ignorance des attaquants concernant l'utilisation de la balise pour estimer les risques d'intrusions. La sécurité par l'obscurité n'est jamais une valeur sûre...
+	 
 	\section*{Codes-barres}
 	\subsection*{Manipulation}
 	\subsection*{Réponse aux questions}
