@@ -169,6 +169,27 @@
 	 
 	 Finalement on notera peut-être qu'il ne faut pas trop compter sur l'ignorance des attaquants concernant l'utilisation de la balise pour estimer les risques d'intrusions. La sécurité par l'obscurité n'est jamais une valeur sûre...
 	 
+	 \subsection*{Ajout d'un serveur éloigné}
+	 \subsubsection*{Conditions}
+	 Il est possible d'améliorer un peu la sécurité en ajoutant un serveur éloigné qui contrôle les informations d'authenfication. Il faut cependant respecter certaines conditions. 
+	 
+	 Les données ne doivent pas rester sur le téléphone plus longtemps que nécessaire. Même si l'authentification est effectuée en terrain controlé sur le serveur, si les données sensibles restent sur le téléphone, l'attaquant pourra les consulter. Il faudrait donc que le serveur fournisse les données après une authentification réussie et qu'elles soient effacées après un court intervalle de temps (de la mémoire vive ou de la mémoire de stockage). Cela permettra donc également de bloquer les utilisateurs qui se sont fait dérober leur terminal. 
+	 
+	 Il faut également pouvoir identifier la source de la requête d'authenfication (s'assurer qu'il s'agit d'un terminal connu et sûr) et également essayer de protéger au mieux les données le long de la transmission.  
+	 
+	 \subsubsection*{Inconvénients}
+	 L'inconvénient évident de ce système est que le terminal mobile nécessite d'être connecté au réseau pour pouvoir être utilisé. Il est également nécessaire que l'utilisateur entre son mot de passe et scanne le badge à chaque utilisation. Cela peut donc être une source d'inconfort pour l'utilisateur. 
+	 
+	 \subsection*{Stratégie}
+	 L'idée serait donc de mettre en place un serveur d'authentification au sein d'un environnement controlé de l'entreprise. Cela permettrait de sécuriser l'étape d'authentifcation et d'autorisation en étant sûr que le code exécuté n'a pas été altéré par un attaquant. 
+	 
+	 Les données sensibles ne doivent pas rester sur le téléphone (en mémoire vive, seulement le temps de la consultation et des traitements nécessaires). Il faudrait également que les données soient effacées de l'application exécutée après un certain temps d'inactivité. Les données transmises doivent évidemment être chiffrées.
+	 
+	 L'utilisateur doit entrer son mot de passe à chaque utilisation, il ne doit pas être stocké en dur. 
+	 Il serait également bien de changer régulièrement de paires mot de passe / balise NFC pour éviter qu'un attaquant puisse attaquer les deux séparèment sur plusieurs jours par exemple. 
+	 
+	 Les inconvénients pour les utilisateurs sont évidemment la perte du mode hors-ligne et les contraintes d'utilisation. Pour la société, il s'agit d'une stratégie beaucoup plus complexe à maintenir et gourmande en ressources.
+	 
 	\section*{Codes-barres}
 	\subsection*{Manipulation}
 	\subsection*{Réponse aux questions}
