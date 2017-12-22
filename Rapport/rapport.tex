@@ -245,6 +245,49 @@
 	
 	{\color[rgb]{0,0.5,0.23}\textbf{Réponse}}
 	
+	\subsection*{Cause probable de ce phénomène}
+	La cause la plus probable de ce tremblement est la présence de bruits parasites dans les données calculées par les différents capteurs, tant au moment de la réception des données livrées par les capteurs d'accélération et de magnétisme, qu'au moment du calcul de la matrice de rotation avec la méthode \textbf{getRotationMatrix} de la classe SensorManager. 
+	
+	En effet, les phénomènes physiques ne sont pas des événements ayant des propriétés constantes. Nous ne sommes pas physiciens, mais nous ne serions pas surpris qu'un champ magnétique perçu par l'appareil oscille avec le temps même si le téléphone ne bouge pas. 
+	
+	De petites variations sont donc visibles a l'oeil nu sur la rotation de de la flèche de la boussole.
+	
+	\subsection*{Solution}
+	En faisant des recherches sur internet, notamment sur des exemples d'implémentation de boussole pour Android justement, nous avons découvert la notion de filtre passe-bas. 
+	
+	Ces filtres permettent (dans ce contexte) de réduire les petites fluctuations des valeurs fournies par les capteurs. Le listing \ref{filtre_passe_bas} présente un exemple de filtre passe-bas que nous avons trouvé : 
+	
+	\lstset{escapechar=@,style=JavaCode}
+	\begin{lstlisting}[caption={Exemple de filtre passe-bas},label={filtre_passe_bas}]
+	protected float[] lowPass( float[] input, float[] output ) {
+		if ( output == null ) {
+			return input;  
+		}
+		   
+		for ( int i=0; i<input.length; i++ ) {
+			output[i] = output[i] + ALPHA * (input[i] - output[i]);
+		}
+		return output;
+	}
+	\end{lstlisting}
+	
+	Dans cette méthode, le paramètre input représente les nouvelles valeurs et output les anciennes valeurs des capteurs. La valeur de la constante ALPHA permet de spécifier la force du filtre. Lorsqu'elle vaut 0, les valeurs ne changent plus (on garde toujours output). Quand elle vaut 1, le filtre n'a pas d'effet.
+	
+	En regardant le code, on remarque que les petites variations de valeurs seront donc atténuées plus fortement que les grandes, et donc cela permet de réduire les perturbations.
+	
+	Nous avons tenté d'implémenter cet algorithme en l'appliquant à la matrice de rotation calculée pour afficher la boussole. Nous avons constaté que les tremblements étaient en effet atténués (avec par exemple ALPHA = 0.1). La boussole ne tremblait plus du tout lorsque le téléphone ne bougeait plus, et fonctionnait correctement. Cependant, nous avons eu d'autres problèmes d'affichages probablement liés au fait que nous réutilisons les deux matrices de rotations entre les affichages (et donc nous modifions parfois des matrices utilisées dans l'affichage). Nous avons donc décidé de ne pas retenir cette amélioration dans le code rendu car nous n'avons pas eu le temps de la perfectionner.
+	
+	En conclusion, cette solution semble fonctionner, mais elle possède sans doute un coût de traitement. Il faut en effet faire attention de ne pas modifier les valeurs utilisées par l'affichage avant d'avoir appliqué le filtre passe-bas. Cela demande donc d'effectuer des copies de valeurs et d'utiliser des matrices supplémentaires. 
+	
+	\subsubsection*{Sources}
+	Exemple de boussole Android utilisant un filtre passe-bas
+	
+	https://www.ssaurel.com/blog/learn-how-to-make-a-compass-application-
+		for-android/
+	
+	Exemple d'implémentation de filtre passe-bas
+	
+	https://www.built.io/blog/applying-low-pass-filter-to-android-sensor-s-readings
 	
 	
 \end{document}
