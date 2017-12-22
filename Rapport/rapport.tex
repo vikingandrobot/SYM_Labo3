@@ -112,23 +112,136 @@
 	\section*{Balises NFC}
 	\subsection*{Manipulation}
 	\subsection*{Réponse aux questions}
+	Sachant que les collaborateurs de l'entreprise UBIQOMP SA se déplacent en véhiculant des informations précieuses dans leurs dispositifs informatiques mobiles (munis de dispositifs de lecture NFC), et qu'ils sont amenés à se rendre dans des zones à risque, un expert a fait les estimations suivantes : 
 	
+	Enseignant: Fabien Dutoit 5 / 8 Assistants: Michaël Sandoz, Luca Bianchi 
+	\begin{itemize}
+		\item La probabilité de vol d'un mobile par une personne malintentionnée et capable d'utiliser les données à des fins préjudiciables pour la société est de 1\% 
+		\item La probabilité que le mot de passe puisse être découvert, soit par analyse des traces de doigts sur l'écran, soit par observation en cours d'utilisation est de 4\% 
+		\item La probabilité de vol du porte-clés est de 0.1\%  
+		\item Environ 10\% des criminels susceptibles d'accéder aux données du mobile sait que le porteclés permet l’accès au mobile.
+	\end{itemize}
+
+	 Quelle est la probabilité moyenne globale que des données soient perdues, dans le cas où il faut la balise ET le mot de passe, ainsi que dans le cas où il faut la balise OU le mot de passe (on négligera dans le calcul la probabilité de l’intersection des deux ensembles), ou encore le cas où seule la balise est nécessaire ? En d'autres termes, si l'on envoie cent collaborateurs en déplacement, quel est le risque encouru de vol de données sensibles ? Mettre vos conclusions en rapport avec l'inconfort subjectif de chaque solution. Peut-on améliorer la situation en introduisant un contrôle des informations d'authentification par un serveur éloigné (transmission d'un hash SHA256 du mot de passe et de la balise NFC) ? Si oui, à quelles conditions ? Quels inconvénients ? Proposer une stratégie permettant à la société UBIQOMP SA d'améliorer grandement son bilan sécuritaire, en détailler les inconvénients pour les utilisateurs et pour la société. 
+	 
+	 {\color[rgb]{0,0.5,0.23}\textbf{Réponse}}
+	 
 	
 	\section*{Codes-barres}
 	\subsection*{Manipulation}
 	\subsection*{Réponse aux questions}
+	Comparer la technologie à codes-barres et la technologie NFC, du point de vue d'une utilisation dans des applications pour smartphones, dans une optique : 
+	\begin{itemize}
+		\item Professionnelle (Authentification, droits d’accès, clés de chiffrage)
+		\item Grand public (Billetterie, contrôle d’accès, e-paiement) 
+		\item Ludique (Preuves d'achat, publicité, etc.)
+		\item Financier (Coûts pour le déploiement de la technologie, possibilités de recyclage, etc.) 
+	\end{itemize}
+
+	{\color[rgb]{0,0.5,0.23}\textbf{Réponse}}
 	
+	La technologie à codes-barres présentent les avantages d'être peut onéreuse voir gratuite. Elle est facile à utiliser, présente depuis longtemps dans la société, facile à reproduire. Permet de stocker des petites informations de 1 à 40 caractères pour les codes-barres 1D, et de 5 à 3000 caractères pour les QR-Codes. 
+
+	Cette technologie est plus adaptée à une utilisation grand public, comme l’étiquetage des marchandises, la billetterie, bons d'achats... 
+	Elle peut également être utilisée sur les bulletins de versements pour contenir les informations relatives au paiement. Par exemple l'application BCV qui permet de scanner le code de la facture et saisie pour vous les informations du paiement. Toutefois, c'est à l'utilisateur de valider la transaction.
+	
+	Pour lire des codes-barres, il est nécessaire de posséder une application tierce pour la lecture et le décodage du code. Il faut évidemment cadrer correctement le code, ce qui peut prendre quelques secondes.
+	
+	En résumé cette technologie ne doit pas contenir d'informations sensibles et permet la lecture de données pour faciliter et accélérer une tierce fonction. Elle doit être associée à une application, si l'on souhaite que les informations enregistrés puissent aboutir à de réelles actions.
+	
+	La technologie NFC présente les avantages de ne pas nécessiter une tierce application pour son utilisation et de stocker un nombre important de données (jusqu'à quelque Ko). Contrairement à la technologie codes-barres, NFC ne peut pas être partiellement ou totalement lu à l'œil nu. 
+	
+	Cette technologie est utilisée dans un contexte professionnel, authentification, droit d'accès. Par exemple les imprimantes de la HEIG-VD utilisent un badge pour authentifier l'utilisateur souhaitant se connecter à une imprimante. Ces badges utilisent la technologie NFC. Cette technologie est également utilisée pour le paiement sans contact. Lorsque l'on approche le natel ou la carte muni d'une puce, l'on peut déclencher une action, comme un paiement, une validation.	
+	Il suffit de posséder un téléphone portable pour pouvoir scanner le contenu d'une étiquette NFC. 
+	
+	Toutefois, la production d'étiquettes NFC est plus couteuses que la production de codes-barres et pour une utilisation simple (tel que le prix d'un article) elle n'est pas avantageuse. 
+	
+	Cette technologie est actuellement encore crainte par les utilisateurs, notamment à cause des soucis liés à la sécurité. 	
+	
+	En résumé, pour une utilisation grand public il est conseillé d'utiliser la technologie codes-barres tant que celle-ci suffit. Si l'on souhaite authentifier ou proposer des services plus complexes alors on passera sur NFC.
+		
+	\begin{tabular}{|l|p{6cm}|p{6cm}|}
+		\hline 
+		\rowcolor{lightgray}& Codes-barres (2D) & NFC \\ 
+		\hline 
+		Technologie & Code 2D  & RFID  \\ 
+		\hline 
+		Portée & 5-10m  & Jusqu'à 5m \\ 
+		\hline 
+		Compatibilité & Tout smartphone  & Smartphones équipés NFC  \\ 
+		\hline 
+		Utilisation & Application de scann & Sans application \\ 
+		\hline 
+		Cout &  très faible/gratuit & 20cts à 2euros par Tag \\ 
+		\hline 
+		Avantages & Simple à déployer sur tout support, à moindre cout. Technologie connue, universelle.  & Aucune application requise. Simplicité et rapidité d'utilisation pour l'utilisateur. \\ 
+		\hline 
+		Désavantages & Expérience utilisateur limitée. Lecture difficile en cas de QR Code altéré ou mal placé. & Exclus les utilisateurs apple (paiement NFC). Usage encore peu connu \\ 
+		\hline 
+	\end{tabular} 
 	
 	\section*{Balises iBeacon}
 	\subsection*{Manipulation}
 	\subsection*{Réponse aux questions}
+	Les iBeacons sont très souvent présentés comme une alternative à NFC. Pouvez-vous commenter cette affirmation en vous basant sur 2-3 exemples de cas d’utilisations (use-cases) concrets (par exemple epaiement, second facteur d’identification, accéder aux horaires à un arrêt de bus, etc.). 
+
+	{\color[rgb]{0,0.5,0.23}\textbf{Réponse}}
 	
+	Les iBeacons permettent d'envoyer des informations à des personnes à proximités de la balise. Cette technologie utilise le bluetooth pour communiquer avec les utilisateurs. Cette technologie permet des actions très proches de NFC. Comme pour la technologie codes-barres les iBeacons nécessite une application tierce pour pouvoir décoder les informations.
+	
+	Les informations contenus dans un iBeacon sont très petites, généralement se seront des ids qui seront interprétés par l'application et qui sera dès lors quoi faire.
+	
+	iBeacon permet de détecter une proximité immédiate mais également à plus grande distance. Elle couvre l'utilisation faite par NFC mais ouvre également de nouveaux usages. Par exemple une voiture équipée, détecterait si l'usager s'éloigne sans avoir verrouiller la voiture et pourrait dès lors le faire, au contraire le voyant s'approcher la déverrouiller.
+	
+	Les balises BLE ne sont pas prévues pour faire du paiement, contrairement à NFC. A noter également qu'une balise iBeacon est bien plus onéreuse qu'un tag NFC.
+	
+	Il existe 3 notions de régions pour les iBeacons
+	\begin{itemize}
+		\item région FAR (2à 100m) localisation imprécise. Elle peut être utilisée par exemple pour :
+		\begin{itemize}
+			\item Une message d'accueil
+			\item Du CRM via iBeacon (fiche du client qui s'affiche sur l'ordinateur de la réceptionniste)
+			\item Coupons de réductions
+		\end{itemize}
+		\item région NEAR (50cm à 2m) la position de l'utilisateur est connue et précise. Elle peut être utilisée par exemple pour :
+		\begin{itemize}
+			\item geo-marketing (push d'informations sur un produit, un tableau, une œuvre..)
+			\item micro-localisation d'un utilisateur (dans une grande surface, une salle de concert pour guider le public vers sa place, une gare, un aéroport..)
+			\item affichage de la fiche d'un patient sur la tablette du médecin lorsqu'il s'approche de la chambre
+		\end{itemize}
+		\item région IMMEDIATE ( < 50cm) la localisation est très précise et on retrouve les usages dédiés à NFC.
+	\end{itemize}
+
+		Toutefois, l'un des grands désavantages des iBeacons est que leurs signaux sont facilement perturbés. Une simple main posée sur la balise suffit à cacher le signal. 
+	
+		En résumé, les iBeacons pourront peut-être se développer dans des domaines que NFC ne peut pas couvrir (localisation à longues distances). Mais concernant les paiements sans contacts ou les authentifications il y a peu de chance que cela change pour l'instant.
+		L’une des premières raisons étant le coût des balises comparé à celui des tags NFC. Mais également parce qu’il faut du temps pour qu’une technologie soit acceptée dans des milieux sensibles (transactions d’argents, identifications..) et il faut que la nouvelle technologie est mieux à proposer pour entrer en concurrence sur le domaine. Actuellement iBeacon ne propose pas des fonctionnalités supplémentaires ou améliorées sur les ondes à courtes distances, dès lors NFC n’a aucune raison d’être remplacé.
+	
+	
+		\begin{tabular}{|l|p{6cm}|p{6cm}|}
+		\hline 
+		\rowcolor{lightgray}& iBeacon & NFC \\ 
+		\hline 
+		Technologie & Bluetooth Low Energy  & RFID  \\ 
+		\hline 
+		Portée & jusqu'à 50m  & Jusqu'à 5m \\ 
+		\hline 
+		Compatibilité & Smarphones équipés BLE  & Smartphones équipés NFC  \\ 
+		\hline 
+		Utilisation & Application propriétaire & Sans application \\ 
+		\hline 
+		Cout &  15 à 50 euro par balise & 20cts à 2euros par Tag \\ 
+		\hline 
+		Avantages & Permet d'envoyer des informations ciblés à un nombre illimités d'utilisateurs en fonction de leur position.  & Aucune application requise. Simplicité et rapidité d'utilisation pour l'utilisateur. \\ 
+		\hline 
+		Désavantages & S'adresses uniquement aux utilisateurs de l'application dédiée. Caractère possiblement intrusif. Balise à durée de vie limitée. & Exclus les utilisateurs apple (paiement NFC). Usage encore peu connu \\ 
+		\hline 
+	\end{tabular} 
 	
 	\section*{Capteurs}
 	\subsection*{Manipulation}
 	\subsection*{Réponse aux questions}
-	
-	
+	Une fois la manipulation effectuée, vous constaterez que les animations de la flèche ne sont pas fluides, il va y avoir un tremblement plus ou moins important même si le téléphone ne bouge pas. Veuillez expliquer quelle est la cause la plus probable de ce tremblement et donner une manière (sans forcément l’implémenter) d’y remédier. 
 	
 	{\color[rgb]{0,0.5,0.23}\textbf{Réponse}}
 	
